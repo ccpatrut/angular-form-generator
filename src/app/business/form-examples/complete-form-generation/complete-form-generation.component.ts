@@ -21,7 +21,7 @@ export class CompleteFormGenerationComponent implements OnInit {
         .withPlaceholder('Desired username')
         .withRequired(true)
         .withDescription('You login identifier')
-        .withValidators([Validators.required, Validators.min(100)])
+        .withValidators([Validators.required, Validators.minLength(2)])
         .build(),
       new FormFieldModelBuilder()
         .withControlType(ControlType.TEXT)
