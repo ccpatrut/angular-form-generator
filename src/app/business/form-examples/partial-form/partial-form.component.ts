@@ -10,7 +10,6 @@ import { AngularFormTransformerService } from './../../../presentation/form-gene
 @Component({
   selector: 'app-partial-form',
   templateUrl: './partial-form.component.html',
-  styleUrls: ['./partial-form.component.scss'],
 })
 export class PartialFormComponent implements OnInit {
   readonly ADDRESS_FORM = new FormGroupModel('address', [
