@@ -1,0 +1,52 @@
+<ng-container *ngFor="let field of group.fields; let i=index; trackBy: trackByFn">
+
+    <div [class]="field.controlType" class="group" [formGroupName]='camelCase(group.name)'>
+
+        <ng-container [ngSwitch]="field.controlType">
+            <div class="form-field" *ngSwitchCase="'boolean'">
+                <mat-checkbox [formControlName]="field.name" [id]="field.name" color="primary">
+                </mat-checkbox>
+            </div>
+
+            <mat-form-field *ngSwitchCase="'password'" class="form-field">
+                <mat-label>{{getLabel(field.name)}}</mat-label>
+                <input matInput [formControlName]="field.name" [id]="field.name" [type]="field.controlType"
+                    [placeholder]="field.placeholder" autocomplete="new-password" [required]="field.required">
+                <mat-icon *ngIf="field.description" matSuffix [matTooltip]="field.description"
+                    matTooltipPosition="above" aria-label="More info about input form">info
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field *ngSwitchCase="'textarea'" class="form-field">
+                <mat-label>{{getLabel(field.name)}}</mat-label>
+                <textarea matInput [formControlName]="field.name" [id]="field.name" [placeholder]="field.placeholder"
+                    [required]="field.required" rows="2">
+                </textarea>
+
+                <mat-icon *ngIf="field.description" matSuffix [matTooltip]="field.description"
+                    matTooltipPosition="above" aria-label="More info about input form">info
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field *ngSwitchCase="'date'">
+                <mat-label>{{getLabel(field.name)}}</mat-label>
+                <input matInput [ngxMatDatetimePicker]="picker" [formControlName]="field.name" [id]="field.name"
+                    [placeholder]="field.placeholder">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false" [touchUi]="false"
+                    color="primary" [enableMeridian]="true" [disableMinute]="false" [hideTime]="false">
+                </ngx-mat-datetime-picker>
+                <mat-error>Date must be valid</mat-error>
+            </mat-form-field>
+
+            <mat-form-field *ngSwitchDefault class="form-field">
+                <mat-label>{{getLabel(field.name)}}</mat-label>
+                <input matInput [formControlName]="field.name" [id]="field.name" [type]="field.controlType"
+                    [placeholder]="field.placeholder" [required]="field.required" autocomplete="false">
+                <mat-icon *ngIf="field.description" matSuffix [matTooltip]="field.description"
+                    matTooltipPosition="above" aria-label="More info about input form">info
+                </mat-icon>
+            </mat-form-field>
+        </ng-container>
+    </div>
+</ng-container>

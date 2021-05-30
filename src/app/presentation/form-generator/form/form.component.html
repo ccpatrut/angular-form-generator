@@ -1,0 +1,8 @@
+<form [formGroup]="form" *ngIf="form">
+    <ng-container *ngFor="let group of groups; let i=index">
+        <h3>{{getLabel(group)}}</h3>
+        <app-form-field [group]="group"></app-form-field>
+    </ng-container>
+
+    <ng-content></ng-content>
+</form>
