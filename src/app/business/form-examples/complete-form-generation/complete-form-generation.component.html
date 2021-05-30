@@ -1,3 +1,3 @@
 <app-form [groups]="SIGN_UP_FORM" (values)="values = $event && $event.signIn">
+    <button mat-stroked-button color="primary" (click)="onSave()">Save</button>
 </app-form>
-<button mat-stroked-button color="primary" (click)="onSave()">Save</button>

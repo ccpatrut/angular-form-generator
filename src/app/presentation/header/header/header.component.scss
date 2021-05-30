@@ -1,0 +1,37 @@
+
+nav{
+    margin-bottom: 3rem;
+}
+
+ul {
+  margin: inherit;
+  padding: inherit;
+  display: flex;
+
+  li {
+    margin: 0;
+    list-style-type: none;
+    a {
+      &:link,
+      &:visited {
+        color: inherit;
+        text-transform: capitalize;
+        border: 1px solid transparent;
+        margin-left: 0.2rem;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+        transition: all 0.7s;
+        display: block;
+        font-weight: 700;
+        padding: 1rem 1rem 1rem 1rem;
+        background: transparent;
+      }
+      &:hover {
+        border-bottom: 3px solid black;
+      }
+      &.active {
+        border-bottom: 3px solid black;
+      }
+    }
+  }
+}

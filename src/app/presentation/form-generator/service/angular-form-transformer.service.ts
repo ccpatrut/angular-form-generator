@@ -20,7 +20,7 @@ export class AngularFormTransformerService {
     const groups = chain(formGroups)
       .map((group) => ({
         name: camelCase(group.name),
-        value: this.fb.group(this.toFormControl(group.fields)),
+        value: this.fb.group(this.toFormControls(group.fields)),
       }))
       .keyBy('name')
       .mapValues('value')
@@ -28,7 +28,7 @@ export class AngularFormTransformerService {
     return new FormGroup(groups);
   }
 
-  toFormControl(fields: Array<FormFieldModel>): Dictionary<FormControl> {
+  toFormControls(fields: Array<FormFieldModel>): Dictionary<FormControl> {
     return chain(fields)
       .map((field) => this.newFormField(field))
       .keyBy('name')
